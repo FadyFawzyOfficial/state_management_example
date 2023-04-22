@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: Text(data),
+            title: const MyText(),
           ),
           body: const Level1(),
         ),
@@ -39,9 +39,9 @@ class Level2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        Container(),
-        const Level3(),
+      children: const [
+        MyTextField(),
+        Level3(),
       ],
     );
   }
@@ -53,5 +53,23 @@ class Level3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(Provider.of<String>(context));
+  }
+}
+
+class MyText extends StatelessWidget {
+  const MyText({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('Needs data');
+  }
+}
+
+class MyTextField extends StatelessWidget {
+  const MyTextField({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const TextField();
   }
 }
