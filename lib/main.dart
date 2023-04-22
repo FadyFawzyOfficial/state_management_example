@@ -59,7 +59,7 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(Provider.of<Data>(context).data);
+    return Text(Provider.of<Data>(context, listen: false).data);
   }
 }
 
