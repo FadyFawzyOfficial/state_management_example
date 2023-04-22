@@ -4,14 +4,12 @@ import 'package:provider/provider.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  final String data = 'Top Secret Data';
-
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Provider<String>(
-      create: (context) => data,
+    return ChangeNotifierProvider<Data>(
+      create: (context) => Data(),
       child: MaterialApp(
         home: Scaffold(
           appBar: AppBar(
@@ -52,7 +50,7 @@ class Level3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(Provider.of<String>(context));
+    return Text(Provider.of<Data>(context).data);
   }
 }
 
@@ -72,4 +70,8 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return const TextField();
   }
+}
+
+class Data extends ChangeNotifier {
+  String data = 'Top Secret Data';
 }
