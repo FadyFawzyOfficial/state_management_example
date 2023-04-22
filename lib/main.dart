@@ -68,10 +68,21 @@ class MyTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TextField();
+    return TextField(
+      onChanged: (value) {
+        //! Listen must be false ...
+        Provider.of<Data>(context, listen: false).updateData(value);
+        // context.read<Data>().updateData(value);
+      },
+    );
   }
 }
 
 class Data extends ChangeNotifier {
   String data = 'Top Secret Data';
+
+  void updateData(String newData) {
+    data = newData;
+    notifyListeners();
+  }
 }
